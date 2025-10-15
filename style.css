@@ -63,195 +63,174 @@ body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
  
 }
-
 .wheel {
-    --x: 0px;
-    --y: 0px;
-    position: absolute;
-    top: var(--y);
-    left: var(--x);
-    width: 500px;
-    height: 500px;
-    transform: translate(-50%, -50%);
-    transform-origin: 0% 0%;
-  }
-  .wheel.on .arc {
-    opacity: 0.8;
-    transform: scale(1) rotate(var(--rotation)) !important;
-    transition-timing-function: cubic-bezier(0, 0.5, 0.5, 1.5);
-  }
-  .wheel .arc {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 50%;
-    transform-origin: 0% 100%;
-    background-image: radial-gradient(circle at 0% 100%, transparent, transparent 29.5%, var(--color-border) 30%, var(--color-border) 30.5%, var(--color) 31%, var(--color) 50%, var(--color-border) 50.25%, var(--color-border) 51.5%, transparent 51.75%, transparent);
-    transition-property: transform, opacity, filter;
-    transition-duration: 0.3s;
-    transition-timing-function: cubic-bezier(0.4, -0.4, 0.7, -0.3);
-    -webkit-clip-path: polygon(0 0, 0 99%, 99% 0);
-    clip-path: polygon(0 0, 0 99%, 99% 0);
-    opacity: 0;
-  }
-  .wheel[data-chosen='1'] .arc:nth-child(1) {
-    opacity: 1;
-    transform: scale(1.1) rotate(var(--rotation)) !important;
-    filter: brightness(150%);
-  }
-  .wheel[data-chosen='1'] .arc:nth-child(1) i {
-    color: rgba(0, 0, 0, 0.5);
-  }
-  .wheel .arc:nth-child(1) {
-    --rotation: -22.5deg;
-    --color: hsl(0deg, 36%, 60%);
-    --color-border: hsl(0deg, 36%, 40%);
-    transform: scale(0) rotate(var(--rotation));
-    transition-delay: 0.015s;
-  }
-  .wheel .arc:nth-child(1) i {
-    transform: rotate(calc(var(--rotation) * -1));
-    color: rgba(255, 255, 255, 0.8);
-    transition: color 0.3s;
-  }
-  .wheel[data-chosen='2'] .arc:nth-child(2) {
-    opacity: 1;
-    transform: scale(1.1) rotate(var(--rotation)) !important;
-    filter: brightness(150%);
-  }
-  .wheel[data-chosen='2'] .arc:nth-child(2) i {
-    color: rgba(0, 0, 0, 0.5);
-  }
-  .wheel .arc:nth-child(2) {
-    --rotation: 22.5deg;
-    --color: hsl(45deg, 36%, 60%);
-    --color-border: hsl(45deg, 36%, 40%);
-    transform: scale(0) rotate(var(--rotation));
-    transition-delay: 0s;
-  }
-  .wheel .arc:nth-child(2) i {
-    transform: rotate(calc(var(--rotation) * -1));
-    color: rgba(255, 255, 255, 0.8);
-    transition: color 0.3s;
-  }
-  .wheel[data-chosen='3'] .arc:nth-child(3) {
-    opacity: 1;
-    transform: scale(1.1) rotate(var(--rotation)) !important;
-    filter: brightness(150%);
-  }
-  .wheel[data-chosen='3'] .arc:nth-child(3) i {
-    color: rgba(0, 0, 0, 0.5);
-  }
-  .wheel .arc:nth-child(3) {
-    --rotation: 67.5deg;
-    --color: hsl(90deg, 36%, 60%);
-    --color-border: hsl(90deg, 36%, 40%);
-    transform: scale(0) rotate(var(--rotation));
-    transition-delay: 0.015s;
-  }
-  .wheel .arc:nth-child(3) i {
-    transform: rotate(calc(var(--rotation) * -1));
-    color: rgba(255, 255, 255, 0.8);
-    transition: color 0.3s;
-  }
-  .wheel[data-chosen='4'] .arc:nth-child(4) {
-    opacity: 1;
-    transform: scale(1.1) rotate(var(--rotation)) !important;
-    filter: brightness(150%);
-  }
-  .wheel[data-chosen='4'] .arc:nth-child(4) i {
-    color: rgba(0, 0, 0, 0.5);
-  }
-  .wheel .arc:nth-child(4) {
-    --rotation: 112.5deg;
-    --color: hsl(135deg, 36%, 60%);
-    --color-border: hsl(135deg, 36%, 40%);
-    transform: scale(0) rotate(var(--rotation));
-    transition-delay: 0s;
-  }
-  .wheel .arc:nth-child(4) i {
-    transform: rotate(calc(var(--rotation) * -1));
-    color: rgba(255, 255, 255, 0.8);
-    transition: color 0.3s;
-  }
-  .wheel[data-chosen='5'] .arc:nth-child(5) {
-    opacity: 1;
-    transform: scale(1.1) rotate(var(--rotation)) !important;
-    filter: brightness(150%);
-  }
-  .wheel[data-chosen='5'] .arc:nth-child(5) i {
-    color: rgba(0, 0, 0, 0.5);
-  }
-  .wheel .arc:nth-child(5) {
-    --rotation: 157.5deg;
-    --color: hsl(180deg, 36%, 60%);
-    --color-border: hsl(180deg, 36%, 40%);
-    transform: scale(0) rotate(var(--rotation));
-    transition-delay: 0.015s;
-  }
-  .wheel .arc:nth-child(5) i {
-    transform: rotate(calc(var(--rotation) * -1));
-    color: rgba(255, 255, 255, 0.8);
-    transition: color 0.3s;
-  }
-  .wheel[data-chosen='6'] .arc:nth-child(6) {
-    opacity: 1;
-    transform: scale(1.1) rotate(var(--rotation)) !important;
-    filter: brightness(150%);
-  }
-  .wheel[data-chosen='6'] .arc:nth-child(6) i {
-    color: rgba(0, 0, 0, 0.5);
-  }
-  .wheel .arc:nth-child(6) {
-    --rotation: 202.5deg;
-    --color: hsl(225deg, 36%, 60%);
-    --color-border: hsl(225deg, 36%, 40%);
-    transform: scale(0) rotate(var(--rotation));
-    transition-delay: 0s;
-  }
-  .wheel .arc:nth-child(6) i {
-    transform: rotate(calc(var(--rotation) * -1));
-    color: rgba(255, 255, 255, 0.8);
-    transition: color 0.3s;
-  }
-  .wheel[data-chosen='7'] .arc:nth-child(7) {
-    opacity: 1;
-    transform: scale(1.1) rotate(var(--rotation)) !important;
-    filter: brightness(150%);
-  }
-  .wheel[data-chosen='7'] .arc:nth-child(7) i {
-    color: rgba(0, 0, 0, 0.5);
-  }
-  .wheel .arc:nth-child(7) {
-    --rotation: 247.5deg;
-    --color: hsl(270deg, 36%, 60%);
-    --color-border: hsl(270deg, 36%, 40%);
-    transform: scale(0) rotate(var(--rotation));
-    transition-delay: 0.015s;
-  }
-  .wheel .arc:nth-child(7) i {
-    transform: rotate(calc(var(--rotation) * -1));
-    color: rgba(255, 255, 255, 0.8);
-    transition: color 0.3s;
-  }
-  .wheel[data-chosen='8'] .arc:nth-child(8) {
-    opacity: 1;
-    transform: scale(1.1) rotate(var(--rotation)) !important;
-    filter: brightness(150%);
-  }
-  .wheel[data-chosen='8'] .arc:nth-child(8) i {
-    color: rgba(0, 0, 0, 0.5);
-  }
-  .wheel .arc:nth-child(8) {
-    --rotation: 292.5deg;
-    --color: hsl(315deg, 36%, 60%);
-    --color-border: hsl(315deg, 36%, 40%);
-    transform: scale(0) rotate(var(--rotation));
-    transition-delay: 0s;
-  }
-  .wheel .arc:nth-child(8) i {
-    transform: rotate(calc(var(--rotation) * -1));
-    color: rgba(255, 255, 255, 0.8);
-    transition: color 0.3s;
-  }
+  opacity: 1; /* Ensure the wheel is always visible */
+  transition: none; /* Remove any transition that hides it initially */
+  --x: 50%; /* Center horizontally */
+  --y: 65%; /* Center vertically */
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: 350px; /* 70% of 500px */
+  height: 350px; /* 70% of 500px */
+  transform: translate(-50%, -50%);
+  transform-origin: 50% 50%; /* Ensure proper scaling and rotation */
+
+}
+.wheel.on {
+  /* Remove the need for the 'on' class to toggle visibility */
+  opacity: 1;
+}
+.wheel.on .arc {
+  opacity: 0.8;
+  transform: scale(1) rotate(var(--rotation)) !important;
+  transition-timing-function: cubic-bezier(0, 0.5, 0.5, 1.5);
+}
+.wheel .arc {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  transform-origin: 0% 100%;
+  background-image: radial-gradient(circle at 0% 100%, transparent, transparent 29.5%, var(--color-border) 30%, var(--color-border) 30.5%, var(--color) 31%, var(--color) 50%, var(--color-border) 50.25%, var(--color-border) 51.5%, transparent 51.75%, transparent);
+  transition-property: transform, opacity, filter;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, -0.4, 0.7, -0.3);
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0); /* Adjust to 90 degrees */
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0); /* Adjust to 90 degrees */
+  opacity: 0;
+  transition-delay: 0s; /* Reset transition delay for all arcs */
+}
+
+.wheel .arc:hover {
+  transform: scale(1.2) rotate(var(--rotation)) !important; /* Magnify the arc */
+  filter: brightness(170%); /* Increase brightness for emphasis */
+  z-index: 10; /* Bring the hovered arc to the front */
+}
+
+.wheel[data-chosen='1'] .arc:nth-child(1) {
+  opacity: 1;
+  transform: scale(1.1) rotate(var(--rotation)) !important;
+  filter: brightness(150%);
+}
+.wheel[data-chosen='1'] .arc:nth-child(1) i {
+  color: rgba(0, 0, 0, 0.5);
+}
+.wheel .arc:nth-child(1) {
+  --rotation: 45deg;
+  --color: hsl(0deg, 36%, 60%);
+  --color-border: hsl(0deg, 36%, 40%);
+  transform: scale(0) rotate(var(--rotation));
+  transition-delay: 0.015s;
+}
+.wheel .arc:nth-child(1) i {
+  transform: rotate(calc(var(--rotation) * -1));
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s;
+}
+.wheel[data-chosen='2'] .arc:nth-child(2) {
+  opacity: 1;
+  transform: scale(1.1) rotate(var(--rotation)) !important;
+  filter: brightness(150%);
+}
+.wheel[data-chosen='2'] .arc:nth-child(2) i {
+  color: rgba(0, 0, 0, 0.5);
+}
+.wheel .arc:nth-child(2) {
+  --rotation: 135deg;
+  --color: hsl(90deg, 36%, 60%);
+  --color-border: hsl(90deg, 36%, 40%);
+  transform: scale(0) rotate(var(--rotation));
+  transition-delay: 0s;
+}
+.wheel .arc:nth-child(2) i {
+  transform: rotate(calc(var(--rotation) * -1));
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s;
+}
+.wheel[data-chosen='3'] .arc:nth-child(3) {
+  opacity: 1;
+  transform: scale(1.1) rotate(var(--rotation)) !important;
+  filter: brightness(150%);
+}
+.wheel[data-chosen='3'] .arc:nth-child(3) i {
+  color: rgba(0, 0, 0, 0.5);
+}
+.wheel .arc:nth-child(3) {
+  --rotation: 225deg;
+  --color: hsl(180deg, 36%, 60%);
+  --color-border: hsl(180deg, 36%, 40%);
+  transform: scale(0) rotate(var(--rotation));
+  transition-delay: 0.015s;
+}
+.wheel .arc:nth-child(3) i {
+  transform: rotate(calc(var(--rotation) * -1));
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s;
+}
+.wheel[data-chosen='4'] .arc:nth-child(4) {
+  opacity: 1;
+  transform: scale(1.1) rotate(var(--rotation)) !important;
+  filter: brightness(150%);
+}
+.wheel[data-chosen='4'] .arc:nth-child(4) i {
+  color: rgba(0, 0, 0, 0.5);
+}
+.wheel .arc:nth-child(4) {
+  --rotation: 315deg;
+  --color: hsl(270deg, 36%, 60%);
+  --color-border: hsl(270deg, 36%, 40%);
+  transform: scale(0) rotate(var(--rotation));
+  transition-delay: 0s;
+}
+.wheel .arc:nth-child(4) i {
+  transform: rotate(calc(var(--rotation) * -1));
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s;
+}
+
+/* Remove unnecessary segments (5-8) */
+
+.wheel .menu-item {
+  position: absolute;
+  width: 50%; /* Match the width of the arc */
+  height: 50%; /* Match the height of the arc */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: 0% 100%;
+  font-size: 1.2rem; /* Adjust font size as needed */
+  color: white; /* Adjust text color */
+  pointer-events: none; /* Prevent interfering with hover effects */
+}
+
+.wheel .menu-item:nth-child(1) {
+  transform: rotate(45deg) translate(0, -120%); /* Adjusted to align above section */
+}
+
+.wheel .menu-item:nth-child(2) {
+  transform: rotate(135deg) translate(0, -120%); /* Adjusted to align above section */
+}
+
+.wheel .menu-item:nth-child(3) {
+  transform: rotate(225deg) translate(0, -120%); /* Adjusted to align above section */
+}
+
+.wheel .menu-item:nth-child(4) {
+  transform: rotate(315deg) translate(0, -120%); /* Adjusted to align above section */
+}
+
+.content-display {
+  margin-top: 20px;
+  padding: 20px;
+  min-height: 200px;
+}
+
+.content-section {
+  text-align: center;
+}
+
+.content-section h2 {
+  margin-bottom: 10px;
+}
