@@ -235,6 +235,11 @@ body {
   margin-bottom: 10px;
 }
 
+#content1image {
+  margin-top: 20px;
+  padding: 20px;
+  min-height: 200px;
+}
 
 
 .content-section h2, #content-1 h2, #content-2 h2, #content-3 h2, #content-4 h2 {
@@ -248,6 +253,15 @@ body {
   font-family: 'Futura', sans-serif; /* Text font */
   font-size: 25px;
   padding: 3px;
+}
+
+
+
+
+
+header a {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Inherits color from parent element */
 }
 
 
