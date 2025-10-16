@@ -54,7 +54,7 @@ body {
     height: 100vh; /* Set the height to 100% of the viewport height */
     margin: 0; /* Remove default margin */
     overflow: hidden; /* Disable scrolling */
-   background-color: bisque;
+   background-color: rgb(197, 193, 189);
 }
 
 
@@ -234,3 +234,30 @@ body {
 .content-section h2 {
   margin-bottom: 10px;
 }
+
+#content-1, p {
+  font-size: 25px;
+  text-align: justify;
+  font-family: s;
+}
+
+#content-2, h1 {
+  font-size: 50px;
+}
+
+#profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.content-section h2, #content-1 h2, #content-2 h2, #content-3 h2, #content-4 h2 {
+  font-family: 'Playfair Display', serif; /* Title font */
+}
+
+#content-1, #content-2, #content-3, #content-4, 
+#content-1 p, #content-2 p, #content-3 p, #content-4 p {
+  font-family: 'Futura', sans-serif; /* Text font */
+}
+
