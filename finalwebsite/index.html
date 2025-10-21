@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<!-- Accordion Js -->
+<script src="js/accordion.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peters website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-nav">
+        <nav class="nav-inner">
+            <a href="#about">About me</a>
+            <a href="#interests">Interests</a>
+            <a href="#experiences">Experiences</a>
+            <a href="#selected-works">Selected works</a>
+            <a href="#contacts">Contacts</a>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="hero row">
+            <div class="left", id="welcome">
+                <h1>WELCOME TO MY WEBSITE!</h1>
+            </div>
+        </section>
+
+        <section id="about" class="row">
+            <div class="left">
+                <div id="name">
+                <h3>Peter</h3>
+           
+                <h3 id="cheng">Cheng</h3>
+            </div>
+                <div class="profile-container" onclick="flipProfile()">
+                    <div class="profile-card">
+                        <div class="profile-front">
+                            <img src="images/IMG_4755.jpg" alt="Peter Cheng portrait" class="profile-image" loading="lazy">
+                        </div>
+                        <div class="profile-back">
+                            <img src="images/profilepic2.jpg" alt="Peter Cheng portrait 2" class="profile-image" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right" id="selfintro">
+                <p>
+                   Hello, I am Peter, an 11th grade in HKIS. This is my personal website for everything
+                   related to me. This website will explore who I am as a person, my skillsets as a developers and programmer, and how you can reach me!
+                </p>
+            </div>
+        </section>
+        
+        <section id="interests" class="row">
+            <div class="left">
+                <h3>Interests</h3>
+            </div>
+            <div class="right" id="interestsbox">
+                <div class="accordion" id="interests-accordion">
+                    <div class="accordion__item">
+                      <div class="accordion__item__header">
+                      Chess
+                      </div>
+                  
+                      <div class="accordion__item__content">
+                        <p> Leader of the HKIS chess club, HKIS is the winner of multipple local tournuments such as the HK interschool,ISF open and Harrow open. </p>
+                       </div>
+                    </div>
+                          <div class="accordion__item">
+                      <div class="accordion__item__header">
+                      Video Games
+                      </div>
+                  
+                      <div class="accordion__item__content">
+                        <p> I have been addicted to videogames ever since I learned to touch a mouse. I like playing a viarety of games, such as RTS, FPS, and soulslike. Recently, I've been obsessed with darks souls.</p>
+                       </div>
+                    </div>
+                          <div class="accordion__item">
+                      <div class="accordion__item__header">
+                      Piano
+                      </div>
+                  
+                      <div class="accordion__item__content">
+                        <p> I'm not the best piano player, but I am an avid piano player who is practicing for diploma, I don't practice as much as I should but I still love doing it.</p>
+                       </div>
+                    </div>
+              </div> <!-- id accordion end -->
+            </div>
+        </section>
+
+        <script>
+        (function(){
+            const items = document.querySelectorAll('.accordion .accordion__item');
+            items.forEach((item) => {
+                const header = item.querySelector('.accordion__item__header');
+                const content = item.querySelector('.accordion__item__content');
+                // ensure initial state
+                content.style.maxHeight = '0px';
+
+                header.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('open');
+                    if (isOpen) {
+                        item.classList.remove('open');
+                        header.classList.remove('active');
+                        content.style.maxHeight = '0px';
+                        content.style.paddingTop = '0px';
+                        content.style.paddingBottom = '0px';
+                    } else {
+                        item.classList.add('open');
+                        header.classList.add('active');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        content.style.paddingTop = '18px';
+                        content.style.paddingBottom = '24px';
+                    }
+                });
+            });
+        })();
+        </script>
+
+        <script>
+        function flipProfile() {
+            const card = document.querySelector('.profile-card');
+            card.classList.toggle('flipped');
+        }
+        </script>
+
+        <hr class="divider">
+
+        <section id="experiences" class="row">
+            <div class="left">
+                <h3>Experiences</h3>
+            </div>
+            <div class="right">
+                <ul>
+                    <li>Front-end development internship</li>
+                    <li>Campus design club leadership</li>
+                    <li>Freelance portfolio site projects</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="selected-works" class="row">
+            <div class="left">
+                <h3>Selected Works</h3>
+            </div>
+            <div class="right">
+                <ul>
+                    <li>Interactive data dashboard</li>
+                    <li>Responsive portfolio website</li>
+                    <li>Brand identity for local cafe</li>
+                    <li>Photography series: City at Night</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="contacts" class="footer">
+        <div class="footer-inner">
+            <h2 class="footer-title">CONTACTS</h2>
+            <ul class="footer-list">
+                <li>Email: peter@example.com</li>
+                <li>LinkedIn: linkedin.com/in/petercheng</li>
+                <li>Instagram: @peter.photos</li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
+
+

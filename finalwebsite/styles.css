@@ -1,0 +1,413 @@
+/* Base reset and typography */
+* { box-sizing: border-box; }
+html, body { height: 100%; overflow-x: hidden; }
+body {
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Top navigation */
+.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(6px);
+    background: rgba(0,0,0,0.6);
+}
+.nav-inner {
+    max-width: none; /* allow full width for more spacing */
+    width: 100%;
+    height: 100px; /* fixed height for nav bar */
+    margin: 0 auto;
+    padding: 0; /* no padding to maintain exact dimensions */
+    display: flex;
+    gap: 0; /* no gaps between blocks */
+    justify-content: space-between; /* distribute blocks evenly */
+}
+.site-nav a {
+    color: transparent;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 33px; /* ~150% */
+    -webkit-text-stroke: 2px #fff; /* outlined text */
+    transition: color 300ms ease, background-color 300ms ease;
+    transform-origin: center center;
+    width: calc(100% / 5); /* exactly 1/5 of nav width */
+    height: 100px; /* full height of nav bar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0; /* no rounded corners for full blocks */
+}
+.site-nav a:hover { 
+    color: #fff; /* fill with white on hover */
+    background-color: rgba(244, 208, 63, 0.6); /* paler, more transparent yellow */
+}
+
+/* Center the "Selected works" text specifically */
+.site-nav a:nth-child(4) {
+    text-align: center;
+}
+
+/* Slanted square under Interests heading */
+#interests h3 {
+    position: relative;
+    transform: skewX(12deg); /* slant Interests text to the right */
+}
+
+#interests h3::before {
+    content: "";
+    position: absolute;
+    top: 42px;
+    left: 90px;
+    width: 150px;
+    height: 100px;
+    border: 2px solid white;
+    transform: skewX(12deg); /* same skew as Peter */
+    z-index: -1; /* behind the text */
+}
+
+/* Layout */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 200px; /* remove top padding to close nav-hero gap */
+}
+
+/* Two-column layout for headings (left) and content (right) */
+.row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 28px;
+    align-items: start;
+}
+.row + .row { margin-top: 320px; }
+/* image under left heading spacing */
+#about .left .profile-image {
+    margin-top: 100px; /* move ~100px down */
+    border: 6px solid #fff; /* white border */
+    transform: scale(1.3); /* ~1.3x size */
+    transform-origin: top left;
+}
+.left { opacity: 0.9; }
+
+/* Headings */
+h1, h2, h3 { margin: 0 0 16px; font-weight: 700; }
+h1 { font-size: 44px; letter-spacing: 0.5px; }
+h2 { font-size: 28px; margin-top: 24px; color: #eaeaea; }
+h3 { font-size: 20px; margin-top: 24px; color: #d6d6d6; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Text */
+p { margin: 0 0 16px; font-size: 16px; color: #f0f0f0; }
+ul { margin: 0 0 24px 20px; padding: 0; }
+li { margin: 6px 0; }
+
+/* JS accordion styles */
+.accordion { max-width: 100%; }
+.accordion-item { margin: 12px 0; border-radius: 10px; overflow: hidden; border: 1px solid #1f1f1f; background: #0e0e0e; }
+.accordion-header {
+    width: 100%;
+    text-align: left;
+    padding: 14px 16px;
+    background: transparent;
+    color: #fff;
+    border: 0;
+    font-weight: 600;
+    cursor: pointer;
+}
+.accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 220ms ease, padding 220ms ease, background 200ms ease;
+    padding: 0 16px;
+    background: #0e0e0e;
+    color: #ddd;
+}
+.accordion-item.open .accordion-panel {
+    max-height: 400px; /* sufficient for current content */
+    padding: 12px 16px 16px;
+    background: #1a1a1a; /* color change when open */
+}
+.accordion-item.open .accordion-header { background: #1a1a1a; }
+
+/* Sections */
+section { margin: 320px 0 360px; }
+
+/* Reduce spacing before Interests section */
+#interests { margin-top: 120px; }
+.divider { height: 1px; background: linear-gradient(90deg, #333, #222); border: 0; margin: 320px 0; }
+
+/* Subtle accent for lists */
+ul li::marker { color: #8c8c8c; }
+
+/* Hero spacing */
+.hero { margin: 0; }
+.subtitle { margin-top: -4px; color: #cfcfcf; font-weight: 400; }
+
+/* Bigger, more prominent hero heading */
+.hero h1 {
+    font-size: clamp(56px, 8vw, 100px);
+    line-height: 1.05;
+}
+
+/* Make the welcome heading ~200% bigger than default hero h1 */
+#welcome h1 {
+    font-size: clamp(112px, 16vw, 200px);
+    position: relative;
+    right: 130px;
+}
+
+/* Slight left/down offset for non-hero rows */
+/* Offsets: keep left slightly left; push right lower for 2x2 feel */
+.row:not(.hero) .left {
+    position: relative;
+    left: -8px;
+    top: 0;
+}
+.row:not(.hero) .right {
+    position: relative;
+    left: 300px;
+    top: 140px;
+}
+
+/* About section: enlarge right text and keep within bounds */
+#about .right {
+    width: 350px;
+    position: relative;
+
+}
+#about .right p {
+    font-size: 35px;
+    line-height: 1.8;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Keep the name on a single line */
+#name { white-space: nowrap; }
+
+/* Make left-side headings much larger across sections */
+.row .left h1,
+.row .left h2,
+.row .left h3 {
+    font-size: clamp(40px, 6.5vw, 96px);
+    line-height: 1.08;
+}
+
+/* Responsive adjustments */
+@media (max-width: 720px) {
+    .row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    .left { opacity: 1; }
+    .row:not(.hero) .left { left: 0; top: 0; }
+    .row:not(.hero) .right { left: 0; top: 0; }
+}
+
+/* Footer (Contacts) */
+.footer {
+    background: #fff;
+    color: #000;
+    margin-top: 0; /* ensure it hugs the bottom of the content region */
+    width: 100%;
+    min-height: 180px; /* ~150-200px target height */
+}
+.footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px; /* tighter spacing to reduce total height */
+}
+.footer-title {
+    font-weight: 700;
+    font-size: clamp(40px, 6vw, 80px);
+    margin: 0;
+    letter-spacing: 1px;
+}
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0; /* smaller gap so content fits in reduced height */
+}
+.footer-list li { margin: 12px 0; font-size: 16px; }
+
+#welcome {
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    margin-top: 20px;
+}
+
+/* Profile image styling */
+.profile-image {
+    display: block;
+    width: min(672px, 100%); /* 420px * 1.6 = 672px */
+    height: auto;
+    border-radius: 28px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    margin: 16px 0 0;
+    object-fit: cover;
+    transform: scale(1.6); /* scale up 60% */
+}
+
+/* Profile flip animation */
+.profile-container {
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.profile-card {
+    position: relative;
+    width: min(672px, 100%); /* match scaled image width */
+    height: auto;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.profile-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.profile-front, .profile-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.profile-back {
+    transform: rotateY(180deg);
+}
+
+.container {
+    max-width: 900px;
+    margin: auto
+}
+
+.title {
+    text-align: center;
+    font-family: Arial;
+    margin-top: 50px;
+    margin-bottom: 50px
+}
+
+.accordion__item {
+    margin: 0; /* connect items */
+    border: 0; /* borders handled by container and separators */
+    border-radius: 0; /* no rounding */
+    overflow: hidden;
+}
+.accordion { 
+    max-width: 100%;
+    border: 0; /* remove outer border outline */
+    border-radius: 0; /* square corners */
+    font-size: 1.5rem; /* scale content ~50% bigger */
+}
+.accordion__item + .accordion__item { 
+    border-top: 0; /* remove separators to get rid of outline */
+}
+
+.accordion__item__header {
+    background-color: #add8e6; /* light blue when collapsed */
+    padding: 22px; /* bigger click target */
+    cursor: pointer;
+    position: relative;
+    color: #000; /* black text on light blue */
+    font-family: Arial;
+    font-weight: 600;
+    font-size: 30px; /* ~50% larger */
+    outline: none; /* remove focus outline */
+}
+
+.accordion__item__header:focus,
+.accordion__item__header:focus-visible { outline: none; }
+
+.accordion__item__header::before {
+    height: 22px;
+    width: 22px;
+    content: "";
+    position: absolute;
+    right: 22px;
+    top: 22px;
+    transition: .5s all;
+    transform: rotate(45deg);
+    border-right: 2px solid currentColor; /* match text color */
+    border-bottom: 2px solid currentColor
+}
+
+.accordion__item__header.active {
+    background-color: #000; /* pure black when open */
+    color: #fff; /* white text on black */
+    transition: background 220ms ease, color 220ms ease;
+}
+
+.accordion__item__header.active::before {
+    transform: rotate(-135deg);
+    top: 32px
+}
+
+.accordion__item__content {
+    overflow: hidden;
+    padding: 0 24px; /* wider horizontal padding */
+    display: block; /* allow height animation */
+    max-height: 0; /* collapsed */
+    background: #fff;
+    color: #000;
+    transition: max-height 240ms ease, background 220ms ease, color 220ms ease, padding 200ms ease;
+}
+.accordion__item.open .accordion__item__content {
+    background: #000; /* pure black when open */
+    color: #fff; /* white text when open */
+    text-align: center; /* center the description text */
+}
+
+#interests-accordion {
+    position: relative;
+    right: 250px;
+}
+
+#cheng {
+    display: inline-block;
+    margin-left: 12px;
+    font-style: italic;
+    transform: skewX(-12deg);
+    position: relative;
+    left: 110px;
+}
+
+#name h3:first-child {
+    transform: skewX(12deg);
+    position: relative;
+}
+
+/* Slanted square behind Peter with matching skew */
+#name h3:first-child::before {
+    content: "";
+    position: absolute;
+    top: 42px;
+    left: 90px;
+    width: 150px;
+    height: 100px;
+    border: 2px solid white;
+    transform: skewX(12deg); /* match Peter's skew */
+    z-index: -1; /* behind the text */
+}
+
+
+#interestsbox {
+    border: 1px solid white;
+    margin: 8px;
+    border-radius: 15px;
+    padding: 24px 28px;
+}
+
+#selfintro {
+    font-size: 25px;
+}
