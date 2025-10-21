@@ -4,22 +4,6 @@
     <title>About me</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <style>
-        .content-display {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-        }
-
-        #content-1 {
-            position: absolute;
-            left: 10%; /* Adjusted from 0 to 10% */
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20%;
-        }
-
-    </style>
 </head>
 <body>
     <header>
@@ -30,11 +14,11 @@
     </header>
 
     <main>
-        <div class="wheel">
-            <div class="arc" data-target="content-1">Menu Item 1</div>
-            <div class="arc" data-target="content-2">Menu Item 2</div>
-            <div class="arc" data-target="content-3">Menu Item 3</div>
-            <div class="arc" data-target="content-4">Menu Item 4</div>
+        <div class="wheel" style="margin-top: 80px;">
+            <div class="arc" data-target="content-1,content1picture">Biography</div>
+            <div class="arc" data-target="content-2">Courses</div>
+            <div class="arc" data-target="content-3">Fun Facts</div>
+            <div class="arc" data-target="content-4, content2picture">Why?</div>
             <div class="blob" id="blob-1" style="display: none;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
             <div class="blob" id="blob-2" style="display: none;">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
             <div class="blob" id="blob-3" style="display: none;">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
@@ -42,13 +26,19 @@
         </div>
 
         <div class="content-display">
-            <div class="content-section" id="content-1" style="display: none;">
+            <div class="content-section" id="content-1" style="display: block;">
                 <h2>Biography</h2>
                 <p>I was born in 2008 in Jilin, China and moved to HK at a very young age. I am currently a junior at HKIS, where I have been in since grade 4.
                     Please feel free to use this place to learn more about me and my interests!
                 </p>
-              
+
+
             </div>
+            <div id="content1picture" style="display: block; text-align: center;">
+                <img src="images/IMG_4755.jpg" alt="Profile Picture" width="300" style="border-radius: 15px;">
+            </div>
+
+
             <div class="content-section" id="content-2" style="display: none;">
                 <h2>Orange Menu Content</h2>
                 <p>This is the content for menu item 2 (orange).</p>
@@ -58,9 +48,12 @@
                 <p>This is the content for menu item 3 (teal).</p>
             </div>
             <div class="content-section" id="content-4" style="display: none;">
-                <h2>Purple Menu Content</h2>
-                <p>This is the content for menu item 4 (purple).</p>
+                <h2>Why this website?</h2>
+                <p>I created this website to showcase <em><strong>ALL</strong></em> the skills I've learned in HTML and CSS regarding webdev. This website will be updated constantly to showcase all the growth I've had!</p>
             </div>
+
+            <div id="content2picture" style="display: none; text-align: center;">
+                <img src="images/construction.png" alt="Content 2 Picture" width="300" style="border-radius: 15px;">
         </div>
     </main>
 

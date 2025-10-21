@@ -87,3 +87,54 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const wheel = document.querySelector('.wheel');
+    const arcs = document.querySelectorAll('.arc');
+    
+    arcs.forEach(arc => {
+        arc.addEventListener('click', function() {
+            const targets = this.getAttribute('data-target').split(',');
+            
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Hide content1picture specifically
+            const content1picture = document.getElementById('content1picture');
+            if (content1picture) {
+                content1picture.style.display = 'none';
+            }
+            
+            // Remove previous wheel selection
+            wheel.removeAttribute('data-chosen');
+            
+            // Show all target elements
+            targets.forEach(targetId => {
+                const targetElement = document.getElementById(targetId.trim());
+                if (targetElement) {
+                    targetElement.style.display = 'block';
+                }
+            });
+            
+            // Set wheel selection (use first target for number)
+            const itemNumber = targets[0].trim().replace('content-', '');
+            wheel.setAttribute('data-chosen', itemNumber);
+        });
+    });
+    
+    // Click outside to deselect
+    document.addEventListener('click', function(e) {
+        if (!wheel.contains(e.target) && !e.target.closest('.content-display')) {
+            wheel.removeAttribute('data-chosen');
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            const content1picture = document.getElementById('content1picture');
+            if (content1picture) {
+                content1picture.style.display = 'none';
+            }
+        }
+    });
+});
