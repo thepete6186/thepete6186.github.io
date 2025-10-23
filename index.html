@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,15 +26,15 @@
             <a href="#contacts">Contacts</a>
         </nav>
     </header>
-    <main class="container">
+    <main class="container-fluid">
         <section class="hero row">
-            <div class="left", id="welcome">
+            <div class="col-12 text-center" id="welcome">
                 <h1>WELCOME TO MY WEBSITE!</h1>
             </div>
         </section>
 
         <section id="about" class="row">
-            <div class="left">
+            <div class="col-md-4 left">
                 <div id="name">
                 <h3>Peter</h3>
            
@@ -49,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <div class="right" id="selfintro">
+            <div class="col-md-8 right" id="selfintro">
                 <p>
                    Hello, I am Peter, an 11th grade in HKIS. This is my personal website for everything
                    related to me. This website will explore who I am as a person, my skillsets as a developers and programmer, and how you can reach me!
@@ -58,10 +60,10 @@
         </section>
         
         <section id="interests" class="row">
-            <div class="left">
+            <div class="col-md-4 left">
                 <h3>Interests</h3>
             </div>
-            <div class="right" id="interestsbox">
+            <div class="col-md-8 right" id="interestsbox">
                 <div class="accordion" id="interests-accordion">
                     <div class="accordion__item">
                       <div class="accordion__item__header">
@@ -128,30 +130,148 @@
             const card = document.querySelector('.profile-card');
             card.classList.toggle('flipped');
         }
+
+        // Experiences grid functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const experienceSquares = document.querySelectorAll('.experience-square');
+            let currentExpanded = null;
+
+            experienceSquares.forEach(square => {
+                // Add description div to each square only if it has a description
+                const descriptionText = square.getAttribute('data-description');
+                if (descriptionText && descriptionText.trim() !== '') {
+                    const description = document.createElement('div');
+                    description.className = 'experience-description';
+                    description.textContent = descriptionText;
+                    square.appendChild(description);
+                }
+
+                square.addEventListener('click', function() {
+                    // If this square is already expanded, close it
+                    if (currentExpanded === square) {
+                        closeExpandedSquare();
+                        return;
+                    }
+
+                    // Close any currently expanded square
+                    if (currentExpanded) {
+                        closeExpandedSquare();
+                    }
+
+                    // Expand this square
+                    expandSquare(square);
+                });
+            });
+
+            function expandSquare(square) {
+                // Add expanded class to square
+                square.classList.add('expanded');
+                currentExpanded = square;
+            }
+
+            function closeExpandedSquare() {
+                if (currentExpanded) {
+                    currentExpanded.classList.remove('expanded');
+                    currentExpanded = null;
+                }
+            }
+
+            // Close on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && currentExpanded) {
+                    closeExpandedSquare();
+                }
+            });
+        });
         </script>
 
         <hr class="divider">
 
         <section id="experiences" class="row">
-            <div class="left">
+            <div class="col-md-4 left">
                 <h3>Experiences</h3>
             </div>
-            <div class="right">
-                <ul>
-                    <li>Front-end development internship</li>
-                    <li>Campus design club leadership</li>
-                    <li>Freelance portfolio site projects</li>
-                </ul>
+            <div class="col-md-8 right">
+                <div class="experiences-grid", id="purplesquare">
+                    <div class="experience-square" data-description="">
+                        <span class="experience-title">Languages</span>
+                        <div class="language-logos">
+                            <div class="logo-item">
+                                <div class="html-logo"></div>
+                                <span>HTML</span>
+                            </div>
+                            <div class="logo-item">
+                                <div class="css-logo"></div>
+                                <span>CSS</span>
+                            </div>
+                            <div class="logo-item">
+                                <div class="cpp-logo"></div>
+                                <span>C++</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-square" data-description="Led the campus design club, organizing workshops and events for students interested in graphic design, web development, and digital art. Mentored junior members and coordinated with faculty.">
+                        <span class="experience-title">Computer Assisted Design</span>
+                        <div class="language-logos">
+                            <div class="logo-item">
+                                <img src="images/sw.png" alt="SolidWorks" class="cad-logo-img">
+                                <span>SolidWorks</span>
+                            </div>
+                            <div class="logo-item">
+                                <img src="images/onshape.webp" alt="Onshape" class="cad-logo-img">
+                                <span>Onshape</span>
+                            </div>
+                            <div class="logo-item">
+                                <img src="images/fusion360logo.png" alt="Fusion 360" class="cad-logo-img">
+                                <span>Fusion 360</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-square" data-description="Created custom portfolio websites for local artists and small businesses. Specialized in clean, modern designs with focus on user experience and mobile responsiveness.">
+                        <span class="experience-title">Mobile Game developement</span>
+                        <div class="language-logos">
+                            <div class="logo-item">
+                                <div class="html-logo"></div>
+                                <span>HTML</span>
+                            </div>
+                            <div class="logo-item">
+                                <div class="css-logo"></div>
+                                <span>CSS</span>
+                            </div>
+                            <div class="logo-item">
+                                <div class="cpp-logo"></div>
+                                <span>C++</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-square" data-description="Developed interactive data visualizations and dashboards for school projects. Used D3.js and Chart.js to create engaging presentations of complex datasets.">
+                        <span class="experience-title">Robotics Team</span>
+                        <div class="language-logos">
+                            <div class="logo-item">
+                                <div class="html-logo"></div>
+                                <span>HTML</span>
+                            </div>
+                            <div class="logo-item">
+                                <div class="css-logo"></div>
+                                <span>CSS</span>
+                            </div>
+                            <div class="logo-item">
+                                <div class="cpp-logo"></div>
+                                <span>C++</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <hr class="divider">
 
         <section id="selected-works" class="row">
-            <div class="left">
+            <div class="col-md-4 left">
                 <h3>Selected Works</h3>
             </div>
-            <div class="right">
+            <div class="col-md-8 right">
                 <ul>
                     <li>Interactive data dashboard</li>
                     <li>Responsive portfolio website</li>
@@ -163,15 +283,22 @@
     </main>
     
     <footer id="contacts" class="footer">
-        <div class="footer-inner">
-            <h2 class="footer-title">CONTACTS</h2>
-            <ul class="footer-list">
-                <li>Email: peter@example.com</li>
-                <li>LinkedIn: linkedin.com/in/petercheng</li>
-                <li>Instagram: @peter.photos</li>
-            </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="footer-title">CONTACTS</h2>
+                    <ul class="footer-list">
+                        <li>Email: peter@example.com</li>
+                        <li>LinkedIn: linkedin.com/in/petercheng</li>
+                        <li>Instagram: @peter.photos</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </footer>
+    
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

@@ -71,17 +71,15 @@ body {
 }
 
 /* Layout */
-.container {
-    max-width: 900px;
+.container-fluid {
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px 200px; /* remove top padding to close nav-hero gap */
 }
 
 /* Two-column layout for headings (left) and content (right) */
 .row {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 28px;
+    margin-bottom: 80px;
     align-items: start;
 }
 .row + .row { margin-top: 320px; }
@@ -217,8 +215,8 @@ ul li::marker { color: #8c8c8c; }
     width: 100%;
     min-height: 180px; /* ~150-200px target height */
 }
-.footer-inner {
-    max-width: 900px;
+.footer .container {
+    max-width: 1200px;
     margin: 0 auto;
     padding: 48px 24px; /* tighter spacing to reduce total height */
 }
@@ -410,4 +408,274 @@ ul li::marker { color: #8c8c8c; }
 
 #selfintro {
     font-size: 25px;
+}
+
+/* Experiences Grid Layout */
+.experiences-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+    width: 640px;
+    height: 640px;
+    position: relative;
+    margin: 150px auto 0;
+    border: none;
+    background: #ffb6c1;
+}
+
+.experience-square {
+    background: #ffb6c1;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-out, background 0.2s ease-out, box-shadow 0.2s ease-out;
+    position: relative;
+    overflow: visible;
+    transform-origin: center center;
+}
+
+.experience-square:hover {
+    background: #ff9bb3;
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+}
+
+.experience-square.expanded {
+    position: relative;
+    transform: scale(1.5);
+    z-index: 10;
+    background: #ff9bb3;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-out, background 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+/* Position each quadrant to expand toward center */
+.experience-square:nth-child(1).expanded {
+    transform-origin: bottom right;
+    transform: scale(1.5);
+}
+
+.experience-square:nth-child(2).expanded {
+    transform-origin: bottom left;
+    transform: scale(1.5);
+}
+
+.experience-square:nth-child(3).expanded {
+    transform-origin: top right;
+    transform: scale(1.5);
+}
+
+.experience-square:nth-child(4).expanded {
+    transform-origin: top left;
+    transform: scale(1.5);
+}
+
+.experience-title {
+    color: #fff;
+    font-weight: 600;
+    font-size: 26px;
+    text-align: center;
+    padding: 16px;
+    line-height: 1.3;
+}
+
+.experience-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    color: #fff;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    line-height: 1.5;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    border-radius: 0;
+}
+
+.experience-square.expanded .experience-description {
+    opacity: 1;
+}
+
+.experience-square.expanded .experience-title {
+    opacity: 0;
+}
+
+/* Language Logos */
+.language-logos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+.experience-square.expanded .language-logos {
+    opacity: 1;
+}
+
+.logo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* CSS Logo */
+.css-logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #1572b6, #33a9dc);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.css-logo::before {
+    content: "{}";
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: monospace;
+}
+
+/* HTML Logo */
+.html-logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #e34f26, #f16529);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.html-logo::before {
+    content: "</>";
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: monospace;
+}
+
+/* C++ Logo */
+.cpp-logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #00599c, #004482);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cpp-logo::before {
+    content: "C++";
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: monospace;
+}
+
+/* SolidWorks Logo */
+.solidworks-logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.solidworks-logo::before {
+    content: "SW";
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+/* Onshape Logo */
+.onshape-logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #1e88e5, #1565c0);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.onshape-logo::before {
+    content: "O";
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+}
+
+/* Fusion 360 Logo */
+.fusion360-logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #00bcd4, #0097a7);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fusion360-logo::before {
+    content: "F360";
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    font-family: Arial, sans-serif;
+}
+
+/* CAD Logo Images */
+.cad-logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px;
+}
+
+#purplesquare {
+    position: relative;
+    width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    right: 400px;
 }
