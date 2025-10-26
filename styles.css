@@ -3,7 +3,7 @@
 html, body { height: 100%; overflow-x: hidden; }
 body {
     margin: 0;
-    background: #000;
+    background: #1c1b1a;
     color: #fff;
     font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
@@ -15,7 +15,7 @@ body {
     top: 0;
     z-index: 100;
     backdrop-filter: blur(6px);
-    background: rgba(0,0,0,0.6);
+    background: 1c1b1a(0,0,0,0.6);
 }
 .nav-inner {
     max-width: none; /* allow full width for more spacing */
@@ -153,7 +153,7 @@ ul li::marker { color: #8c8c8c; }
 
 /* Make the welcome heading ~200% bigger than default hero h1 */
 #welcome h1 {
-    font-size: clamp(112px, 16vw, 200px);
+    font-size: clamp(80px, 15vw, 150px);
     position: relative;
     right: 130px;
 }
@@ -210,7 +210,7 @@ ul li::marker { color: #8c8c8c; }
 /* Footer (Contacts) */
 .footer {
     background: #fff;
-    color: #000;
+    color: #1c1b1a;
     margin-top: 0; /* ensure it hugs the bottom of the content region */
     width: 100%;
     min-height: 180px; /* ~150-200px target height */
@@ -317,7 +317,7 @@ ul li::marker { color: #8c8c8c; }
     padding: 22px; /* bigger click target */
     cursor: pointer;
     position: relative;
-    color: #000; /* black text on light blue */
+    color: #1c1b1a; /* black text on light blue */
     font-family: Arial;
     font-weight: 600;
     font-size: 30px; /* ~50% larger */
@@ -341,7 +341,7 @@ ul li::marker { color: #8c8c8c; }
 }
 
 .accordion__item__header.active {
-    background-color: #000; /* pure black when open */
+    background-color: #1c1b1a; /* pure black when open */
     color: #fff; /* white text on black */
     transition: background 220ms ease, color 220ms ease;
 }
@@ -357,11 +357,11 @@ ul li::marker { color: #8c8c8c; }
     display: block; /* allow height animation */
     max-height: 0; /* collapsed */
     background: #fff;
-    color: #000;
+    color: #1c1b1a;
     transition: max-height 240ms ease, background 220ms ease, color 220ms ease, padding 200ms ease;
 }
 .accordion__item.open .accordion__item__content {
-    background: #000; /* pure black when open */
+    background: #1c1b1a; /* pure black when open */
     color: #fff; /* white text when open */
     text-align: center; /* center the description text */
 }
@@ -408,6 +408,7 @@ ul li::marker { color: #8c8c8c; }
 
 #selfintro {
     font-size: 25px;
+    width: 100px;
 }
 
 /* Experiences Grid Layout */
@@ -421,11 +422,11 @@ ul li::marker { color: #8c8c8c; }
     position: relative;
     margin: 150px auto 0;
     border: none;
-    background: #ffb6c1;
+    background: #43d446;
 }
 
 .experience-square {
-    background: #ffb6c1;
+    background: #43d446;
     border: none;
     border-radius: 0;
     display: flex;
@@ -436,10 +437,15 @@ ul li::marker { color: #8c8c8c; }
     position: relative;
     overflow: visible;
     transform-origin: center center;
+    
+}
+
+.experience-square:nth-child(2) {
+    background: #43d446; /* Match the background of the Languages section */
 }
 
 .experience-square:hover {
-    background: #ff9bb3;
+    background: #43d446;
     transform: scale(1.02);
     box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
 }
@@ -448,7 +454,7 @@ ul li::marker { color: #8c8c8c; }
     position: relative;
     transform: scale(1.5);
     z-index: 10;
-    background: #ff9bb3;
+    background: #43d446;
     border: none;
     border-radius: 0;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -679,3 +685,135 @@ ul li::marker { color: #8c8c8c; }
     margin-right: auto;
     right: 400px;
 }
+/* Tilt the EXPERIENCES header like INTERESTS */
+#experiences h3 {
+    position: relative;
+    transform: skewX(12deg); /* slant Interests text to the right */
+}
+
+#experiences h3::before {
+    content: "";
+    position: absolute;
+    top: 42px;
+    left: 90px;
+    width: 150px;
+    height: 100px;
+    border: 2px solid white;
+    transform: skewX(12deg); /* same skew as Peter */
+    z-index: -1; /* behind the text */
+}
+
+
+.container {
+  
+    left: calc(50% - 300px);
+    display: flex;
+  }
+  
+  .card {
+    display: flex;
+    height: 280px;
+    width: 200px;
+    background-color: #17141d;
+    border-radius: 10px;
+    box-shadow: -1rem 0 3rem #000;
+  /*   margin-left: -50px; */
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 0px;
+  }
+  
+  .card:not(:first-child) {
+      margin-left: -50px;
+  }
+  
+  .card:hover {
+    transform: translateY(-20px);
+    transition: 0.4s ease-out;
+  }
+  
+  .card:hover ~ .card {
+    position: relative;
+    left: 50px;
+    transition: 0.4s ease-out;
+  }
+  
+  .title {
+    color: white;
+    font-weight: 300;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+  }
+  
+  .bar {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    height: 5px;
+    width: 150px;
+  }
+  
+  .emptybar {
+    background-color: #2e3033;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .filledbar {
+    position: absolute;
+    top: 0px;
+    z-index: 3;
+    width: 0px;
+    height: 100%;
+    background: rgb(0,154,217);
+    background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
+    transition: 0.6s ease-out;
+  }
+  
+  .card:hover .filledbar {
+    width: 120px;
+    transition: 0.4s ease-out;
+  }
+  
+  .circle {
+    position: absolute;
+    top: 150px;
+    left: calc(50% - 60px);
+  }
+  
+  .stroke {
+    stroke: white;
+    stroke-dasharray: 360;
+    stroke-dashoffset: 360;
+    transition: 0.6s ease-out;
+  }
+  
+  svg {
+    fill: #17141d;
+    stroke-width: 2px;
+  }
+  
+  .card:hover .stroke {
+    stroke-dashoffset: 100;
+    transition: 0.6s ease-out;
+  }
+
+  #selected-works h3 {
+    position: relative;
+    transform: skewX(12deg); /* slant Interests text to the right */
+}
+
+#selected-works h3::before {
+    content: "";
+    position: absolute;
+    top: 42px;
+    left: 90px;
+    width: 150px;
+    height: 100px;
+    border: 2px solid white;
+    transform: skewX(12deg); /* same skew as Peter */
+    z-index: -1; /* behind the text */
+}
+
+

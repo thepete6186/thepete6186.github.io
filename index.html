@@ -15,6 +15,79 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Remove squares/bullets from cards */
+        .container .card {
+            list-style: none !important;
+        }
+        
+        .container .card::before {
+            display: none !important;
+        }
+        
+        .container .card * {
+            list-style: none !important;
+        }
+        
+        /* Additional rules to ensure no list markers appear */
+        .card, .card * {
+            list-style-type: none !important;
+            list-style: none !important;
+        }
+        
+        .card::marker {
+            display: none !important;
+        }
+        
+        .card *::marker {
+            display: none !important;
+        }
+        
+        .logo-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .logo-item:hover {
+            transform: scale(1.15);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+        
+        .cad-logo-img,
+        .html-logo,
+        .css-logo,
+        .cpp-logo {
+            transform: scale(1.3);
+        }
+        
+        .experiences-grid {
+            margin: 0 auto;
+            transform: translate(-60px, 155px);
+        }
+        
+        /* Selected works cards positioning and scaling */
+        #selected-works .container {
+            transform: translateY(100px) scale(1.5);
+        }
+        
+        /* Section spacing adjustments - consistent 250px spacing */
+        #about {
+            margin-top: 45px;
+        }
+        
+        #interests {
+            margin-top: 250px;
+            margin-bottom: 20px;
+        }
+        
+        #experiences {
+            margin-top: -150px;
+        }
+        
+        #selected-works {
+            margin-top: 250px;
+        }
+    </style>
 </head>
 <body>
     <header class="site-nav">
@@ -210,7 +283,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="experience-square" data-description="Led the campus design club, organizing workshops and events for students interested in graphic design, web development, and digital art. Mentored junior members and coordinated with faculty.">
+                    <div class="experience-square" data-description="">
                         <span class="experience-title">Computer Assisted Design</span>
                         <div class="language-logos">
                             <div class="logo-item">
@@ -227,38 +300,23 @@
                             </div>
                         </div>
                     </div>
-                    <div class="experience-square" data-description="Created custom portfolio websites for local artists and small businesses. Specialized in clean, modern designs with focus on user experience and mobile responsiveness.">
+                    <div class="experience-square" data-description="">
                         <span class="experience-title">Mobile Game developement</span>
-                        <div class="language-logos">
-                            <div class="logo-item">
-                                <div class="html-logo"></div>
-                                <span>HTML</span>
+            
+                        <div class="language-logos" style="flex-direction: column; align-items: center; text-align: center;">
+                            <div class="logo-item" style="margin-bottom: 10px;">
+                                <img src="images/xcode.jpg" alt="Xcode" class="cad-logo-img">
                             </div>
-                            <div class="logo-item">
-                                <div class="css-logo"></div>
-                                <span>CSS</span>
-                            </div>
-                            <div class="logo-item">
-                                <div class="cpp-logo"></div>
-                                <span>C++</span>
-                            </div>
+                            <p style="font-size: 0.85rem; margin: 0; padding: 0 15px; line-height: 1.4;">I've taken a class in mobile game developement when I was in grade 9, focusing on different aspects of mobile game design, how to operate syntax, and how to code both front and back end.</p>
                         </div>
                     </div>
-                    <div class="experience-square" data-description="Developed interactive data visualizations and dashboards for school projects. Used D3.js and Chart.js to create engaging presentations of complex datasets.">
+                    <div class="experience-square" data-description="">
                         <span class="experience-title">Robotics Team</span>
-                        <div class="language-logos">
-                            <div class="logo-item">
-                                <div class="html-logo"></div>
-                                <span>HTML</span>
+                        <div class="language-logos" style="flex-direction: column; align-items: center; text-align: center;">
+                            <div class="logo-item" style="margin-bottom: 10px;">
+                                <img src="images/vex.png" alt="VEX Robotics" class="cad-logo-img">
                             </div>
-                            <div class="logo-item">
-                                <div class="css-logo"></div>
-                                <span>CSS</span>
-                            </div>
-                            <div class="logo-item">
-                                <div class="cpp-logo"></div>
-                                <span>C++</span>
-                            </div>
+                            <p style="font-size: 0.85rem; margin: 0; padding: 0 15px; line-height: 1.4;">I have been a member of the VEX robotics team for more than 2 years now, helping them in many aspects such as Computer Assisted design, autonomous coding, and of course designing the robot.</p>
                         </div>
                     </div>
                 </div>
@@ -271,14 +329,29 @@
             <div class="col-md-4 left">
                 <h3>Selected Works</h3>
             </div>
-            <div class="col-md-8 right">
-                <ul>
-                    <li>Interactive data dashboard</li>
-                    <li>Responsive portfolio website</li>
-                    <li>Brand identity for local cafe</li>
-                    <li>Photography series: City at Night</li>
-                </ul>
-            </div>
+            <div class="container">
+                <div class="card">
+                  <h2 class="title">Project 1</h2>
+                 
+               
+                   
+                </div>
+                <div class="card">
+                  <h2 class="title">Project 2</h2>
+                  
+                 
+                </div>
+                <div class="card">
+                  <h2 class="title">Project 3</h2>
+                 
+                
+                </div>
+                <div class="card">
+                  <h2 class="title">Project 4</h2>
+                  
+                  
+                </div>
+              </div>
         </section>
     </main>
     
@@ -288,9 +361,9 @@
                 <div class="col-12">
                     <h2 class="footer-title">CONTACTS</h2>
                     <ul class="footer-list">
-                        <li>Email: peter@example.com</li>
-                        <li>LinkedIn: linkedin.com/in/petercheng</li>
-                        <li>Instagram: @peter.photos</li>
+                        <li>Email: thepete6186@gmail.com</li>
+                        <li>Instagram: #peteching5</li>
+                        <li>Github: thepete6186</li>
                     </ul>
                 </div>
             </div>
